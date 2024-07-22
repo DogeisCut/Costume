@@ -6,10 +6,66 @@ import {getSquareDimensions} from '../math';
 import BoundingBoxTool from '../selection-tools/bounding-box-tool';
 import NudgeTool from '../selection-tools/nudge-tool';
 
+const sideCount = {
+    value: 4
+};
+
 /**
  * Tool for drawing ovals.
  */
+
+class EllipseWithDefinedPoints extends paper.Path {
+    constructor(center, size, points) {
+        super();
+        this.center = center;
+        this.setSize(size);
+        this.points = points;
+        this.updatePoints();
+        this.strokeColor = 'black';
+        this.fillColor = 'orange';
+    }
+
+    updatePoints() {
+        this.removeSegments();
+        let angleStep = 360 / this.points;
+
+        for (let i = 0; i < this.points; i++) {
+            let angle = i * angleStep;
+            let radian = angle * Math.PI / 180;
+            let x = this.center.x + (this.width / 2) * Math.cos(radian);
+            let y = this.center.y + (this.height / 2) * Math.sin(radian);
+            this.add(new Point(x, y));
+        }
+
+        this.closed = true;
+        this.smooth();
+    }
+
+    setSize(size) {
+        if (Array.isArray(size)) {
+            this.width = size[0];
+            this.height = size[1];
+        } else {
+            this.width = size;
+            this.height = size;
+        }
+        this.updatePoints();
+    }
+
+    setPoints(points) {
+        this.points = points;
+        this.updatePoints();
+    }
+}
+
 class OvalTool extends paper.Tool {
+    static set sideCount (value) {
+        sideCount.value = value;
+    }
+    static get sideCount () {
+        return sideCount.value;
+    }
+
     static get TOLERANCE () {
         return 2;
     }
@@ -80,10 +136,18 @@ class OvalTool extends paper.Tool {
         } else {
             this.isBoundingBoxMode = false;
             clearSelection(this.clearSelectedItems);
-            this.oval = new paper.Shape.Ellipse({
-                point: event.downPoint,
-                size: 0
-            });
+            if (sideCount.value == 4) {
+                this.oval = new paper.Shape.Ellipse({
+                    point: event.downPoint,
+                    size: 0
+                });
+            } else {
+                this.oval = new EllipseWithDefinedPoints(
+                    event.downPoint,
+                    0,
+                    sideCount.value
+                )
+            }
             styleShape(this.oval, this.colorState);
         }
     }

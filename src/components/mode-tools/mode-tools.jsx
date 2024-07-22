@@ -11,6 +11,7 @@ import {changeBrushSize} from '../../reducers/brush-mode';
 import {changeBrushSize as changeEraserSize} from '../../reducers/eraser-mode';
 import {changeRoundedCornerSize} from '../../reducers/rounded-rect-mode';
 import {changeTrianglePolyCount} from '../../reducers/triangle-mode';
+import {changeOvalPolyCount} from '../../reducers/oval-mode';
 import {changeCurrentlySelectedShape} from '../../reducers/sussy-mode';
 import {changeBitBrushSize} from '../../reducers/bit-brush-size';
 import {changeBitEraserSize} from '../../reducers/bit-eraser-size';
@@ -594,6 +595,33 @@ const ModeToolsComponent = props => {
                 </div>
             );
         }
+        case Modes.OVAL:
+        {
+            const currentIcon = triangleIcon;
+            const currentSideValue = props.ovalPolyValue;
+            const changeFunction = props.onPolyCountSliderChangeOval;
+            return (
+                <div className={classNames(props.className, styles.modeTools)}>
+                    <div>
+                        <img
+                            alt={props.intl.formatMessage(messages.currentSideCount)}
+                            className={styles.modeToolsIcon}
+                            draggable={false}
+                            src={currentIcon}
+                        />
+                    </div>
+                    <LiveInput
+                        range
+                        small
+                        max={1000}
+                        min="3"
+                        type="number"
+                        value={currentSideValue}
+                        onSubmit={changeFunction}
+                    />
+                </div>
+            );
+        }
         default:
             // Leave empty for now, if mode not supported
             return (
@@ -611,6 +639,7 @@ ModeToolsComponent.propTypes = {
     eraserValue: PropTypes.number,
     roundedCornerValue: PropTypes.number,
     trianglePolyValue: PropTypes.number,
+    ovalPolyValue: PropTypes.number,
     currentlySelectedShape: PropTypes.string,
     fillBitmapShapes: PropTypes.bool,
     format: PropTypes.oneOf(Object.keys(Formats)),
@@ -657,6 +686,7 @@ const mapStateToProps = state => ({
     eraserValue: state.scratchPaint.eraserMode.brushSize,
     roundedCornerValue: state.scratchPaint.roundedRectMode.roundedCornerSize,
     trianglePolyValue: state.scratchPaint.triangleMode.trianglePolyCount,
+    ovalPolyValue: state.scratchPaint.ovalMode.ovalPolyCount,
     currentlySelectedShape: state.scratchPaint.sussyMode.currentlySelectedShape
 });
 const mapDispatchToProps = dispatch => ({
@@ -668,6 +698,9 @@ const mapDispatchToProps = dispatch => ({
     },
     onPolyCountSliderChange: polyCount => {
         dispatch(changeTrianglePolyCount(polyCount));
+    },
+    onPolyCountSliderChangeOval: polyCount => {
+        dispatch(changeOvalPolyCount(polyCount));
     },
     onCurrentlySelectedShapeChange: shape => {
         dispatch(changeCurrentlySelectedShape(shape));
