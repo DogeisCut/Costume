@@ -81,6 +81,41 @@ const messages = defineMessages({
         defaultMessage: 'More',
         description: 'Label for dropdown to access more action buttons',
         id: 'paint.paintEditor.more'
+    },
+    docSettings: {
+        defaultMessage: 'Document Settings',
+        description: 'todo write this later',
+        id: 'paint.paintEditor.docSettings'
+    },
+    save: {
+        defaultMessage: 'Save',
+        description: 'todo write this later',
+        id: 'paint.paintEditor.save'
+    },
+    open: {
+        defaultMessage: 'Open',
+        description: 'todo write this later',
+        id: 'paint.paintEditor.open'
+    },
+    saveAs: {
+        defaultMessage: 'Save As',
+        description: 'todo write this later',
+        id: 'paint.paintEditor.saveAs'
+    },
+    import: {
+        defaultMessage: 'Import',
+        description: 'todo write this later',
+        id: 'paint.paintEditor.import'
+    },
+    export: {
+        defaultMessage: 'Export',
+        description: 'todo write this later',
+        id: 'paint.paintEditor.export'
+    },
+    info: {
+        defaultMessage: 'Info',
+        description: 'todo write this later',
+        id: 'paint.paintEditor.info'
     }
 });
 
@@ -111,6 +146,72 @@ const FixedToolsComponent = props => {
                     />
                 </MediaQuery>
             </InputGroup>
+
+            {/* Save/Save As */}
+            {isVector(props.format) ?
+                <InputGroup className={styles.modDashedBorder}>
+                    <LabeledIconButton
+                        disabled={false}
+                        hideLabel={false}
+                        imgSrc={groupIcon}
+                        title={props.intl.formatMessage(messages.save)}
+                        //onClick={props.onGroup}
+                    />
+                    <LabeledIconButton
+                        disabled={false}
+                        hideLabel={false}
+                        imgSrc={groupIcon}
+                        title={props.intl.formatMessage(messages.saveAs)}
+                        //onClick={props.onUngroup}
+                    />
+                </InputGroup> : null
+            }
+
+            {/* Open */}
+            {isVector(props.format) ?
+                <InputGroup className={styles.modDashedBorder}>
+                    <LabeledIconButton
+                        disabled={false}
+                        hideLabel={false}
+                        imgSrc={groupIcon}
+                        title={props.intl.formatMessage(messages.open)}
+                        //onClick={props.onGroup}
+                    />
+                </InputGroup> : null
+            }
+
+            {/* Import/Export */}
+            {isVector(props.format) ?
+                <InputGroup className={styles.modDashedBorder}>
+                    <LabeledIconButton
+                        disabled={false}
+                        hideLabel={false}
+                        imgSrc={groupIcon}
+                        title={props.intl.formatMessage(messages.import)}
+                        //onClick={props.onGroup}
+                    />
+                    <LabeledIconButton
+                        disabled={false}
+                        hideLabel={false}
+                        imgSrc={groupIcon}
+                        title={props.intl.formatMessage(messages.export)}
+                        //onClick={props.onUngroup}
+                    />
+                </InputGroup> : null
+            }
+
+            {/* Info */}
+            {isVector(props.format) ?
+                <InputGroup className={styles.modDashedBorder}>
+                    <LabeledIconButton
+                        disabled={false}
+                        hideLabel={false}
+                        imgSrc={groupIcon}
+                        title={props.intl.formatMessage(messages.info)}
+                        //onClick={props.onGroup}
+                    />
+                </InputGroup> : null
+            }
 
             {/* Undo/Redo */}
             <InputGroup>
@@ -229,6 +330,7 @@ const FixedToolsComponent = props => {
                     </InputGroup> */}
                 </MediaQuery> : null
             }
+
             {isVector(props.format) ?
                 <MediaQuery maxWidth={layout.fullSizeEditorMinWidth - 1}>
                     <InputGroup>

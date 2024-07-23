@@ -62,11 +62,15 @@ class PaperCanvas extends React.Component {
 
         // Don't show handles by default
         paper.settings.handleSize = 0;
+        
         // Make layers.
         setupLayers(this.props.format);
         updateTheme(this.props.theme);
         this.importImage(
             this.props.imageFormat, this.props.image, this.props.rotationCenterX, this.props.rotationCenterY);
+
+        // Color the selections..
+        paper.project.layers[2].style.selectedColor = '#ff8c00'
     }
     componentWillReceiveProps (newProps) {
         if (this.props.imageId !== newProps.imageId) {
