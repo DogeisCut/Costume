@@ -87,7 +87,7 @@ module.exports = [
         plugins: base.plugins.concat([
             new HtmlWebpackPlugin({
                 template: 'src/playground/index.ejs',
-                title: 'Scratch 3.0 Paint Editor Playground'
+                title: 'Costume'
             })
         ])
     }),

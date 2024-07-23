@@ -181,7 +181,7 @@ const _makeRasterLayer = function () {
 };
 
 const BACKGROUND_LIGHT = '#FFFFFF';
-const BACKGROUND_TILE_LIGHT = '#D9E3F2';
+const BACKGROUND_TILE_LIGHT = '#EFE4D7';
 const BACKGROUND_DARK = '#111';
 const BACKGROUND_TILE_DARK = '#222';
 
@@ -283,7 +283,7 @@ const _makeDragCrosshairLayer = function () {
 };
 
 const OUTLINE_INNER_LIGHT = '#FFFFFF';
-const OUTLINE_OUTER_LIGHT = '#4280D7';
+const OUTLINE_OUTER_LIGHT = '#ff8c00';
 const OUTLINE_INNER_DARK = '#555555';
 
 const _makeOutlineLayer = function () {
@@ -301,7 +301,7 @@ const _makeOutlineLayer = function () {
     return outlineLayer;
 };
 
-const WORKSPACE_BOUNDS_LIGHT = '#ECF1F9';
+const WORKSPACE_BOUNDS_LIGHT = '#F7F0EA';
 const WORKSPACE_BOUNDS_DARK = '#333';
 
 const _makeBackgroundGuideLayer = function (format) {

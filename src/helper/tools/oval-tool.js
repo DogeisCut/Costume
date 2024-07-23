@@ -13,51 +13,6 @@ const sideCount = {
 /**
  * Tool for drawing ovals.
  */
-
-class EllipseWithDefinedPoints extends paper.Path {
-    constructor(center, size, points) {
-        super();
-        this.center = center;
-        this.setSize(size);
-        this.points = points;
-        this.updatePoints();
-        this.strokeColor = 'black';
-        this.fillColor = 'orange';
-    }
-
-    updatePoints() {
-        this.removeSegments();
-        let angleStep = 360 / this.points;
-
-        for (let i = 0; i < this.points; i++) {
-            let angle = i * angleStep;
-            let radian = angle * Math.PI / 180;
-            let x = this.center.x + (this.width / 2) * Math.cos(radian);
-            let y = this.center.y + (this.height / 2) * Math.sin(radian);
-            this.add(new Point(x, y));
-        }
-
-        this.closed = true;
-        this.smooth();
-    }
-
-    setSize(size) {
-        if (Array.isArray(size)) {
-            this.width = size[0];
-            this.height = size[1];
-        } else {
-            this.width = size;
-            this.height = size;
-        }
-        this.updatePoints();
-    }
-
-    setPoints(points) {
-        this.points = points;
-        this.updatePoints();
-    }
-}
-
 class OvalTool extends paper.Tool {
     static set sideCount (value) {
         sideCount.value = value;
@@ -103,6 +58,21 @@ class OvalTool extends paper.Tool {
         this.isBoundingBoxMode = null;
         this.active = false;
     }
+    createCustomCircle(center, radius, points) {
+        var path = new paper.Path();
+        var angleStep = 360 / points;
+        
+        for (var i = 0; i < points; i++) {
+            var angle = i * angleStep;
+            var x = center.x + radius * Math.cos(angle * Math.PI / 180);
+            var y = center.y + radius * Math.sin(angle * Math.PI / 180);
+            path.add(new paper.Point(x, y));
+        }
+        
+        path.closed = true;
+        path.smooth();
+        return path;
+    }
     getHitOptions () {
         return {
             segments: true,
@@ -136,19 +106,6 @@ class OvalTool extends paper.Tool {
         } else {
             this.isBoundingBoxMode = false;
             clearSelection(this.clearSelectedItems);
-            if (sideCount.value == 4) {
-                this.oval = new paper.Shape.Ellipse({
-                    point: event.downPoint,
-                    size: 0
-                });
-            } else {
-                this.oval = new EllipseWithDefinedPoints(
-                    event.downPoint,
-                    0,
-                    sideCount.value
-                )
-            }
-            styleShape(this.oval, this.colorState);
         }
     }
     handleMouseDrag (event) {
@@ -159,21 +116,37 @@ class OvalTool extends paper.Tool {
             return;
         }
 
-        const downPoint = new paper.Point(event.downPoint.x, event.downPoint.y);
-        const point = new paper.Point(event.point.x, event.point.y);
-        const squareDimensions = getSquareDimensions(event.downPoint, event.point);
-        if (event.modifiers.shift) {
-            this.oval.size = squareDimensions.size.abs();
-        } else {
-            this.oval.size = downPoint.subtract(point);
+        if (this.oval) {
+            this.oval.remove();
         }
 
+        // idk how paper works so we use rectangle to make a oval
+        const oval = new paper.Rectangle(event.downPoint, event.point);
+        const squareDimensions = getSquareDimensions(event.downPoint, event.point);
+        if (event.modifiers.shift) {
+            oval.size = squareDimensions.size.abs();
+        }
+
+        if (sideCount.value == 4) {
+            this.oval = new paper.Shape.Ellipse({
+                point: event.downPoint,
+                size: 100
+            }).toPath(true /* insert */);;
+        } else {
+            this.oval = this.createCustomCircle(
+                event.downPoint,
+                50,
+                sideCount.value
+            )
+        }
+        this.oval.scale(oval.size.width / 100, oval.size.height / 100, event.downPoint);
         if (event.modifiers.alt) {
-            this.oval.position = downPoint;
+            this.oval.position = event.downPoint;
         } else if (event.modifiers.shift) {
             this.oval.position = squareDimensions.position;
         } else {
-            this.oval.position = downPoint.subtract(this.oval.size.multiply(0.5));
+            const dimensions = event.point.subtract(event.downPoint);
+            this.oval.position = event.downPoint.add(dimensions.multiply(0.5));
         }
 
         styleShape(this.oval, this.colorState);
@@ -191,18 +164,15 @@ class OvalTool extends paper.Tool {
         }
 
         if (this.oval) {
-            if (Math.abs(this.oval.size.width * this.oval.size.height) < OvalTool.TOLERANCE / paper.view.zoom) {
+            if (this.oval.area < OvalTool.TOLERANCE / paper.view.zoom) {
                 // Tiny oval created unintentionally?
                 this.oval.remove();
                 this.oval = null;
             } else {
-                const ovalPath = this.oval.toPath(true /* insert */);
-                this.oval.remove();
-                this.oval = null;
-
-                ovalPath.selected = true;
+                this.oval.selected = true;
                 this.setSelectedItems();
                 this.onUpdateImage();
+                this.oval = null;
             }
         }
         this.active = false;

@@ -2,7 +2,7 @@ import paper from '@scratch/paper';
 import {getGuideLayer} from './layer';
 import {getAllRootItems} from './selection';
 
-const GUIDE_BLUE = '#009dec';
+const GUIDE_BLUE = '#ff8c00';
 const GUIDE_GREY = '#aaaaaa';
 
 const setDefaultGuideStyle = function (item) {

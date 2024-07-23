@@ -12,7 +12,7 @@ const reducer = function (state, action) {
                 log.warn(`Invalid side count: ${action.ovalPolyCount}`);
                 return state;
             }
-            const value = Math.max(3, action.ovalPolyCount);
+            const value = Math.max(2, action.ovalPolyCount);
             OvalTool.sideCount = value;
             return { ovalPolyCount: value };
         default:

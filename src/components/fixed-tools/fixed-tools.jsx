@@ -34,8 +34,8 @@ const BufferedInput = BufferedInputHOC(Input);
 const messages = defineMessages({
     costume: {
         id: 'paint.paintEditor.costume',
-        description: 'Label for the name of a costume',
-        defaultMessage: 'Costume'
+        description: 'The name of the document vector and subsequently the file.',
+        defaultMessage: 'Document Name'
     },
     group: {
         defaultMessage: 'Group',

@@ -4,7 +4,7 @@ const CHANGE_FILL_COLOR = 'scratch-paint/fill-style/CHANGE_FILL_COLOR';
 const CHANGE_FILL_COLOR_2 = 'scratch-paint/fill-style/CHANGE_FILL_COLOR_2';
 const CHANGE_FILL_GRADIENT_TYPE = 'scratch-paint/fill-style/CHANGE_FILL_GRADIENT_TYPE';
 const CLEAR_FILL_GRADIENT = 'scratch-paint/fill-style/CLEAR_FILL_GRADIENT';
-const DEFAULT_COLOR = '#9966FF';
+const DEFAULT_COLOR = '#ff8c00'; //'#9966FF';
 
 const reducer = makeColorStyleReducer({
     changePrimaryColorAction: CHANGE_FILL_COLOR,

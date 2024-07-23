@@ -60,6 +60,8 @@ import bitRectIcon from '../bit-rect-mode/rectangle.svg';
 import bitOvalOutlinedIcon from '../bit-oval-mode/oval-outlined.svg';
 import bitRectOutlinedIcon from '../bit-rect-mode/rectangle-outlined.svg';
 
+import ovalPointsIcon from './icons/ovalPoints.svg';
+
 import {MAX_STROKE_WIDTH} from '../../reducers/stroke-width';
 
 import selectableShapes from '../../helper/selectable-shapes.js';
@@ -597,7 +599,7 @@ const ModeToolsComponent = props => {
         }
         case Modes.OVAL:
         {
-            const currentIcon = triangleIcon;
+            const currentIcon = ovalPointsIcon;
             const currentSideValue = props.ovalPolyValue;
             const changeFunction = props.onPolyCountSliderChangeOval;
             return (
@@ -614,7 +616,7 @@ const ModeToolsComponent = props => {
                         range
                         small
                         max={1000}
-                        min="3"
+                        min="2"
                         type="number"
                         value={currentSideValue}
                         onSubmit={changeFunction}

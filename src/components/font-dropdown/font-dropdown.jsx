@@ -221,7 +221,7 @@ const ModeToolsComponent = props => (
                     >
                         <FormattedMessage
                             defaultMessage="Add more fonts..."
-                            description="Button in costume editor font list to add more fonts"
+                            description="Button in vector editor font list to add more fonts"
                             id="tw.paint.fonts.more"
                         />
                     </Button>
