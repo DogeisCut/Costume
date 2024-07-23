@@ -110,7 +110,9 @@ It’s worth noting that Costume is based on the [PenguinMod](https://github.com
 
 - ### Brush (Modifications)
 
-  - The brush tool has a checkbox to make it use a stroke rather than fill.
+  - ~~The brush tool has a checkbox to make it use a stroke rather than fill.~~
+
+    - Okay aparently this JUST got added to PenguinMod, so this works.
 
   - The brush tool will also have an option to enable merging. Which is on by default.
 
@@ -234,6 +236,10 @@ Without further ado, here is my painfully incomplete todo list, infrequently upd
   - [ ] (dark mode plz my eyes)
 
 - [ ] Icon/Logo
+
+- [ ] Brush Tool
+
+    - [x] ~~Brsuh Stroke Option (it was done for me in the form of the pen tool lol)~~
 
 - [ ] The rest…..
 
