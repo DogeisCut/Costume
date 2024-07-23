@@ -2,11 +2,7 @@
 
 Costume is designed to be a user friendly vector editor, based on that of the Scratch Paint editor. Its goal is not to be feature heavy but rather to make creating sprites with it a smooth and wonderful experience.
 
-****
-
 When finished, it will be downloadable as an executable app, I hope to support more than just windows too, and perhaps even have a web editor version.
-
-****
 
 It’s worth noting that Costume is based on the [PenguinMod](https://github.com/PenguinMod/PenguinMod-Paint) version of the paint editor, so things like skewing and snapping will already be added. Many addons part of Scratch Addons may also become part of the editor.
 
@@ -205,11 +201,7 @@ It’s worth noting that Costume is based on the [PenguinMod](https://github.com
 
 Thankfully, after several painful attempts, I managed to get the repo running, which means the project is in motion! 
 
-****
-
 Feel free to contribute! I don’t have any specific requirements to the project (Just don’t utterly ruin things.), just make pull requests and I’ll review them. Maybe if you keep it up I’ll invite you for direct repo access.
-
-****
 
 Without further ado, here is my painfully incomplete todo list, infrequently updated as I likely forget to:
 
@@ -248,15 +240,9 @@ Without further ado, here is my painfully incomplete todo list, infrequently upd
 
 ## License and Credit:
 
-****
-
 Costume is licensed under the GNU General Public License version 3.0. See LICENSE for more information.
 
-****
-
 Costume is based on [PenguinMod/PenguinMod-Paint](https://github.com/PenguinMod/PenguinMod-Paint) which is in turn based on [Turbowarp/scratch-paint](https://github.com/TurboWarp/scratch-paint), Both projects share the same license.
-
-****
 
 The original scratch-paint that this is based on uses the following license:
 
@@ -267,11 +253,11 @@ All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-1\. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-2\. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
-3\. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
