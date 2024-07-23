@@ -2,7 +2,7 @@
 
 Costume is designed to be a user friendly vector editor, based on that of the Scratch Paint editor. Its goal is not to be feature heavy but rather to make creating sprites with it a smooth and wonderful experience.
 
-When finished, it will be downloadable as an executable app, I hope to support more than just windows too, and perhaps even have a web editor version.
+When ready, I'd like to have this avaliable in the form of a downloadable app (seen in releases), and on pages as a web app!
 
 It’s worth noting that Costume is based on the [PenguinMod](https://github.com/PenguinMod/PenguinMod-Paint) version of the paint editor, so things like skewing and snapping will already be added. Many addons part of Scratch Addons may also become part of the editor.
 
