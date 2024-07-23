@@ -1,24 +1,277 @@
-# TurboWarp/scratch-paint
+# Costume
 
-Modified version of scratch-paint for TurboWarp
+Costume is designed to be a user friendly vector editor, based on that of the Scratch Paint editor. Its goal is not to be feature heavy but rather to make creating sprites with it a smooth and wonderful experience.
 
-## License
+****
 
-TurboWarp/scratch-paint is licensed under the GNU General Public License version 3.0. See LICENSE for more information.
+When finished, it will be downloadable as an executable app, I hope to support more than just windows too, and perhaps even have a web editor version.
+
+****
+
+It’s worth noting that Costume is based on the [PenguinMod](https://github.com/PenguinMod/PenguinMod-Paint) version of the paint editor, so things like skewing and snapping will already be added. Many addons part of Scratch Addons may also become part of the editor.
+
+
+## General
+
+- ### Bitmap
+
+  - Bitmap will be entirely removed, however you can still import images into a vector work.
+
+- ### Tools and Functions
+
+  - Tools and Functions now have pages and are ordered by potential use, lesser often used things will be at the end of the pages.
+
+- ### Image Size
+
+  - The edges of the document are no longer inaccessible, shapes will be allowed to be dragged there, but they may not show up in the final SVG.
+
+  - The viewbox and the actual document size will be able to be adjusted by hand. But by default the viewbox is automatically calculated as it normally is.
+
+- ### Tabs
+
+  - The costume sidebar will be repurposed as a multi-document editor, allowing for easy transfer of content between files.
+
+- ### Color Selector
+
+  - Add some preset color swatches. And maybe even a way to save them to the document.
+
+  - The 2.0 ones :)
+
+- ### Unsaved Reminder
+
+  - An asterisk along with the document name will appear in the page title, unsaved changes will result in a warning when trying to leave/close the app
+
+
+## Functions (Internally called fixed-tools)
+
+- ### Costume Name
+
+  - The costume name will be replaced with the document name
+
+- ### Document Settings
+
+  - The top bar will also feature image size options and a menu to crop the image to your work however you see fit.
+
+- ### Image Import
+
+  - This will bring up a prompt allowing you to add an svg image or bitmap.
+
+  - When importing SVG, you will be asked if you wish to add it to the document (grouped or not) as more svg, or add it as bitmap.
+
+  - When importing a bitmap, you will have quality options you can adjust.
+
+- ### Save/Save as
+
+  - These are a given, I think it’s fairly obvious how this will work.
+
+  - It’s important to note that Costume will not automatically try to modify the file you open unless you save it to the same destination.
+
+    - Essentially, ‘Save’ and ‘Save as’ work the same until you save for the first time.
+
+- ### Export
+
+  - Brings a popup menu allowing you to export your SVG image into different formats like png, jpg, and even favicon. It will have options for image resolution and such.
+
+  - Even though this pops up every export click, the options save to the document, allowing for easy exporting.
+
+- ### Info
+
+  - Provides info such as how big the drawing is in pixels.
+
+
+## Bottom Bar Functions (These are part of paint-editor)
+
+- ### Zoom (Modifications)
+
+  - A slider and percentage for precise zoom control. :P
+
+- ### Layers
+
+  - A new pop up menu via a button will allow you to lock certain shapes and groups, and create/modify arbitrary layers.
+
+- ### Grid
+
+  - Options to snap points, shapes, etc to a grid that saves to the document. Very nice for tilesets and such.
+
+- ### Snapping
+
+  - This allows you to adjust things such as what angles holding shift snaps to for shapes and lines or the distance holding shift while moving a shape will snap to its original spot.
+
+
+## Tools (Internally called mode-tools)
+
+- ### Select (Modifications)
+
+  - Set blending mode, options are the ones available in inkscape but add and multiply are at the top and it’s ordered by use.
+
+  - Set line/shape order (does the fill layer over the lines or vice versa?)
+
+- ### Reshape (Modifications)
+
+  - Set line join, end, and start types.
+
+  - Set the line dotted-ness
+
+- ### Brush (Modifications)
+
+  - The brush tool has a checkbox to make it use a stroke rather than fill.
+
+  - The brush tool will also have an option to enable merging. Which is on by default.
+
+- ### Eraser (Modifications)
+
+  - The eraser tool will have a checkbox to erase entire shapes.
+
+- ### Fill (Modifications)
+
+  - The paint bucket will see new options to create shapes by filling in by color or alpha rather than changing the color of an existing line or fill.
+
+  - The default behavior will still exist obviously.
+
+- ### Text (Modifications)
+
+  - Fix the weird visual issues related to the alignment options.
+
+  - Options to change the text spacing.
+
+  - Options to change the text size in pixels.
+
+  - Options to change the text weight (if the font supports it)
+
+  - Add more fonts
+
+- ### Line (Modifications)
+
+  - The line tool will see the same modifications as the Reshape tool.
+
+  - (although considering these affect all shapes, i may just make these global options.)
+
+- ### Circle (Modifications)
+
+  - The circle tool will have a number box to dictate how many points will make up the circle.
+
+- ### Rectangle (Modifications)
+
+  - The rectangle tool will be merged with the rounded rectangle tool. A roundness level of 0 will create a regular rectangle.
+
+- ### Rounded Rectangle (Modifications)
+
+  - The rounded rectangle tool will be merged with the rectangle tool. A roundness level of not 0 will create a rounded rectangle. The level of X axis roundness and Y axis roundness will be separated, they can be linked and will be by default.
+
+- ### Triangle (Modifications)
+
+  - Rename to “Polygon”
+
+  - Options to make stars such as
+
+    - Star dip
+
+    - Curvature
+
+  - Roundness options.
+
+- ### Shapes (Modifications)
+
+  - The user will be able to add their own shapes, assuming the target selection is made up of only one contiguous fill.
+
+- ### Arrow (Modifications)
+
+  - The arrow tool will see modifications for arrow thickness and style, allowing you to adjust both ends.
+
+  - A bunch of arrow settings do actually exist but they are quite finicky, fine control would be preferable
+
+- ### Gradient
+
+  - This tool will allow you to adjust the points of any gradient, as well as make more complex gradients. This tool will work on strokes and fills depending on which is selected/what the shape contains.
+
+- ### Image
+
+  - This tool is for adjusting settings related to bitmap images.
+
+- ### Lock/Unlock
+
+  - A tool for quickly locking/unlocking shapes and groups.
+
+- ### Pivot
+
+  - This tool allows you to adjust the pivot point for shapes and groups and have it saved that way.
+
+- ### Align
+
+  - This tool allows you to align multiple shapes/groups in various ways, relative to the document, selection, etc.
+
+
+## Todo and Contributing:
+
+Thankfully, after several painful attempts, I managed to get the repo running, which means the project is in motion! 
+
+****
+
+Feel free to contribute! I don’t have any specific requirements to the project (Just don’t utterly ruin things.), just make pull requests and I’ll review them. Maybe if you keep it up I’ll invite you for direct repo access.
+
+****
+
+Without further ado, here is my painfully incomplete todo list, infrequently updated as I likely forget to:
+
+- [x] ~~Get the damn thing running.~~
+
+- [ ] Make mockups for desired features.
+
+- [ ] Remove bitmap
+
+- [ ] Circle
+
+  - [x] ~~Points~~
+
+  - [ ] Fix 3 and 2 Points
+
+- [ ] Text
+
+  - [ ] Fix missing add fonts button
+
+  - [ ] Fix missing fonts.
+
+- [ ] Organize The Repo to my preferences
+
+- [ ] Prepare the repo for use with Electron
+
+- [ ] Cleanup unnecessary packages/dependencies
+
+- [ ] Merge addons
+
+  - [ ] (dark mode plz my eyes)
+
+- [ ] Icon/Logo
+
+- [ ] The rest…..
+
+
+## License and Credit:
+
+****
+
+Costume is licensed under the GNU General Public License version 3.0. See LICENSE for more information.
+
+****
+
+Costume is based on [PenguinMod/PenguinMod-Paint](https://github.com/PenguinMod/PenguinMod-Paint) which is in turn based on [Turbowarp/scratch-paint](https://github.com/TurboWarp/scratch-paint), Both projects share the same license.
+
+****
 
 The original scratch-paint that this is based on uses the following license:
 
 ```
 Copyright (c) 2016, Massachusetts Institute of Technology
+
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+1\. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+2\. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
-3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+3\. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
