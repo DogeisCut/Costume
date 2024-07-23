@@ -47,6 +47,7 @@ class Playground extends React.Component {
             rtl: rtl,
         };
         this.reusableCanvas = document.createElement('canvas');
+        window.playgroundInstance = this;
     }
     handleUpdateName (name) {
         this.setState({name});

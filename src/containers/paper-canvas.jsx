@@ -70,7 +70,10 @@ class PaperCanvas extends React.Component {
             this.props.imageFormat, this.props.image, this.props.rotationCenterX, this.props.rotationCenterY);
 
         // Color the selections..
-        paper.project.layers[2].style.selectedColor = '#ff8c00'
+        paper.project.layers.forEach(layer => {
+            layer.style.selectedColor = '#ff8c00';
+        });
+        
     }
     componentWillReceiveProps (newProps) {
         if (this.props.imageId !== newProps.imageId) {
