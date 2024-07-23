@@ -101,12 +101,18 @@ It’s worth noting that Costume is based on the [PenguinMod](https://github.com
   - Set blending mode, options are the ones available in inkscape but add and multiply are at the top and it’s ordered by use.
 
   - Set line/shape order (does the fill layer over the lines or vice versa?)
+ 
+  -  A setting to select only by the origin/piviot points of objects.
 
 - ### Reshape (Modifications)
 
   - Set line join, end, and start types.
 
   - Set the line dotted-ness
+ 
+  - Smooth button
+ 
+  - Reduce button
 
 - ### Brush (Modifications)
 
@@ -238,6 +244,8 @@ Without further ado, here is my painfully incomplete todo list, infrequently upd
 - [ ] Icon/Logo
 
 - [ ] Brush Tool
+
+    - [x] Merging setting 
 
     - [x] ~~Brsuh Stroke Option (it was done for me in the form of the pen tool lol)~~
 
