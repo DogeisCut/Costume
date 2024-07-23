@@ -147,6 +147,53 @@ const FixedToolsComponent = props => {
                 </MediaQuery>
             </InputGroup>
 
+            {/* Undo/Redo */}
+            <InputGroup>
+                <ButtonGroup>
+                    <Button
+                        className={
+                            classNames(
+                                styles.buttonGroupButton,
+                                {
+                                    [styles.modNoEndBorder]: !redoDisabled
+                                }
+                            )
+                        }
+                        disabled={undoDisabled}
+                        onClick={props.onUndo}
+                    >
+                        <img
+                            alt={props.intl.formatMessage(messages.undo)}
+                            className={classNames(
+                                styles.buttonGroupButtonIcon,
+                                styles.undoIcon
+                            )}
+                            draggable={false}
+                            src={undoIcon}
+                        />
+                    </Button>
+                    <Button
+                        className={
+                            classNames(
+                                styles.buttonGroupButton,
+                                {
+                                    [styles.modStartBorder]: !redoDisabled
+                                }
+                            )
+                        }
+                        disabled={redoDisabled}
+                        onClick={props.onRedo}
+                    >
+                        <img
+                            alt={props.intl.formatMessage(messages.redo)}
+                            className={styles.buttonGroupButtonIcon}
+                            draggable={false}
+                            src={redoIcon}
+                        />
+                    </Button>
+                </ButtonGroup>
+            </InputGroup>
+
             {/* Save/Save As */}
             {isVector(props.format) ?
                 <InputGroup className={styles.modDashedBorder}>
@@ -212,53 +259,6 @@ const FixedToolsComponent = props => {
                     />
                 </InputGroup> : null
             }
-
-            {/* Undo/Redo */}
-            <InputGroup>
-                <ButtonGroup>
-                    <Button
-                        className={
-                            classNames(
-                                styles.buttonGroupButton,
-                                {
-                                    [styles.modNoEndBorder]: !redoDisabled
-                                }
-                            )
-                        }
-                        disabled={undoDisabled}
-                        onClick={props.onUndo}
-                    >
-                        <img
-                            alt={props.intl.formatMessage(messages.undo)}
-                            className={classNames(
-                                styles.buttonGroupButtonIcon,
-                                styles.undoIcon
-                            )}
-                            draggable={false}
-                            src={undoIcon}
-                        />
-                    </Button>
-                    <Button
-                        className={
-                            classNames(
-                                styles.buttonGroupButton,
-                                {
-                                    [styles.modStartBorder]: !redoDisabled
-                                }
-                            )
-                        }
-                        disabled={redoDisabled}
-                        onClick={props.onRedo}
-                    >
-                        <img
-                            alt={props.intl.formatMessage(messages.redo)}
-                            className={styles.buttonGroupButtonIcon}
-                            draggable={false}
-                            src={redoIcon}
-                        />
-                    </Button>
-                </ButtonGroup>
-            </InputGroup>
 
             {/* Group/Ungroup */}
             {isVector(props.format) ?
