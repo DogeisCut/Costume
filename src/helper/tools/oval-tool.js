@@ -73,6 +73,24 @@ class OvalTool extends paper.Tool {
         path.smooth();
         return path;
     }
+    makeCircle(center) {
+        if (sideCount.value == 4) {
+            const oval = new paper.Shape.Ellipse({
+                point: center,
+                size: 100
+            })
+            const path_oval = oval.toPath(true);
+            oval.remove();
+            return path_oval
+            
+        } else {
+            return this.createCustomCircle(
+                center,
+                50,
+                sideCount.value
+            )
+        }
+    }
     getHitOptions () {
         return {
             segments: true,
@@ -127,18 +145,7 @@ class OvalTool extends paper.Tool {
             oval.size = squareDimensions.size.abs();
         }
 
-        if (sideCount.value == 4) {
-            this.oval = new paper.Shape.Ellipse({
-                point: event.downPoint,
-                size: 100
-            }).toPath(true /* insert */);;
-        } else {
-            this.oval = this.createCustomCircle(
-                event.downPoint,
-                50,
-                sideCount.value
-            )
-        }
+        this.oval = this.makeCircle(event.downPoint);
         this.oval.scale(oval.size.width / 100, oval.size.height / 100, event.downPoint);
         if (event.modifiers.alt) {
             this.oval.position = event.downPoint;
@@ -150,9 +157,6 @@ class OvalTool extends paper.Tool {
         }
 
         styleShape(this.oval, this.colorState);
-    }
-    handleMouseMove (event) {
-        this.boundingBoxTool.onMouseMove(event, this.getHitOptions());
     }
     handleMouseUp (event) {
         if (event.event.button > 0 || !this.active) return; // only first mouse button
@@ -176,6 +180,9 @@ class OvalTool extends paper.Tool {
             }
         }
         this.active = false;
+    }
+    handleMouseMove (event) {
+        this.boundingBoxTool.onMouseMove(event, this.getHitOptions());
     }
     deactivateTool () {
         this.boundingBoxTool.deactivateTool();
