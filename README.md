@@ -77,6 +77,10 @@ It’s worth noting that Costume is based on the [PenguinMod](https://github.com
 
 ## Bottom Bar Functions (These are part of paint-editor)
 
+- ### Settings
+
+  - General settings, I'll figure out what to put there later...
+
 - ### Zoom (Modifications)
 
   - A slider and percentage for precise zoom control. :P
@@ -113,6 +117,10 @@ It’s worth noting that Costume is based on the [PenguinMod](https://github.com
   - Smooth button
  
   - Reduce button
+
+  - More point options such as mirrored and split.
+
+  - Split points into two and such
 
 - ### Brush (Modifications)
 
