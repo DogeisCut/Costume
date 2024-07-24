@@ -52,6 +52,12 @@ class FixedTools extends React.Component {
     handleSetSelectedItems () {
         this.props.setSelectedItems(this.props.format);
     }
+    handleOpenImage () {
+        window.playgroundInstance.uploadImage()
+    }
+    handleSaveAs() {
+        window.playgroundInstance.downloadImage()
+    }
     render () {
         return (
             <FixedToolsComponent
@@ -67,6 +73,12 @@ class FixedTools extends React.Component {
                 onUndo={this.props.onUndo}
                 onUngroup={this.handleUngroup}
                 onUpdateImage={this.props.onUpdateImage}
+                onSave={function(){}}
+                onSaveAs={this.handleSaveAs}
+                onOpen={this.handleOpenImage}
+                onImport={function(){}}
+                onExport={function(){}}
+                onInfo={function(){}}
                 onUpdateName={this.props.onUpdateName}
                 width={this.props.width}
             />

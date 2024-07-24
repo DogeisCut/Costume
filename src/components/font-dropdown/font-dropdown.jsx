@@ -214,7 +214,7 @@ const ModeToolsComponent = props => (
                         />
                     </CustomFontButton>
                 ))}
-                {props.onManageFonts && (
+                {props.onManageFonts && ( // Doesnt show since the managefonts function doesnt exist. I'll have to do some things myself...
                     <Button
                         className={styles.modMenuItem}
                         onClick={props.onManageFonts}

@@ -47,6 +47,7 @@ import zoomInIcon from './icons/zoom-in.svg';
 import zoomOutIcon from './icons/zoom-out.svg';
 import zoomResetIcon from './icons/zoom-reset.svg';
 import themeIcon from './icons/theme.svg';
+import StrokeStyleIndicatorComponent from '../stroke-style-indicator.jsx';
 
 const messages = defineMessages({
     bitmap: {
@@ -103,6 +104,10 @@ const PaintEditorComponent = props => (
                             />
                             {/* stroke width */}
                             <StrokeWidthIndicatorComponent
+                                onUpdateImage={props.onUpdateImage}
+                            />
+                            {/* style */}
+                            <StrokeStyleIndicatorComponent
                                 onUpdateImage={props.onUpdateImage}
                             />
                         </InputGroup>

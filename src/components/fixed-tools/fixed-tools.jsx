@@ -30,6 +30,13 @@ import sendFrontIcon from './icons/send-front.svg';
 import undoIcon from './icons/undo.svg';
 import ungroupIcon from './icons/ungroup.svg';
 
+import exportIcon from './icons/export.svg';
+import importIcon from './icons/import.svg';
+import infoIcon from './icons/info.svg';
+import openIcon from './icons/open.svg';
+import saveAsIcon from './icons/save-as.svg';
+import saveIcon from './icons/save.svg';
+
 const BufferedInput = BufferedInputHOC(Input);
 const messages = defineMessages({
     costume: {
@@ -200,16 +207,16 @@ const FixedToolsComponent = props => {
                     <LabeledIconButton
                         disabled={false}
                         hideLabel={false}
-                        imgSrc={groupIcon}
+                        imgSrc={saveIcon}
                         title={props.intl.formatMessage(messages.save)}
-                        //onClick={props.onGroup}
+                        onClick={props.onSave}
                     />
                     <LabeledIconButton
                         disabled={false}
                         hideLabel={false}
-                        imgSrc={groupIcon}
+                        imgSrc={saveAsIcon}
                         title={props.intl.formatMessage(messages.saveAs)}
-                        //onClick={props.onUngroup}
+                        onClick={props.onSaveAs}
                     />
                 </InputGroup> : null
             }
@@ -220,9 +227,9 @@ const FixedToolsComponent = props => {
                     <LabeledIconButton
                         disabled={false}
                         hideLabel={false}
-                        imgSrc={groupIcon}
+                        imgSrc={openIcon}
                         title={props.intl.formatMessage(messages.open)}
-                        //onClick={props.onGroup}
+                        onClick={props.onOpen}
                     />
                 </InputGroup> : null
             }
@@ -233,16 +240,16 @@ const FixedToolsComponent = props => {
                     <LabeledIconButton
                         disabled={false}
                         hideLabel={false}
-                        imgSrc={groupIcon}
+                        imgSrc={importIcon}
                         title={props.intl.formatMessage(messages.import)}
-                        //onClick={props.onGroup}
+                        onClick={props.onImport}
                     />
                     <LabeledIconButton
                         disabled={false}
                         hideLabel={false}
-                        imgSrc={groupIcon}
+                        imgSrc={exportIcon}
                         title={props.intl.formatMessage(messages.export)}
-                        //onClick={props.onUngroup}
+                        onClick={props.onExport}
                     />
                 </InputGroup> : null
             }
@@ -253,9 +260,9 @@ const FixedToolsComponent = props => {
                     <LabeledIconButton
                         disabled={false}
                         hideLabel={false}
-                        imgSrc={groupIcon}
+                        imgSrc={infoIcon}
                         title={props.intl.formatMessage(messages.info)}
-                        //onClick={props.onGroup}
+                        onClick={props.onInfo}
                     />
                 </InputGroup> : null
             }
@@ -411,6 +418,12 @@ FixedToolsComponent.propTypes = {
     onUndo: PropTypes.func.isRequired,
     onUngroup: PropTypes.func.isRequired,
     onUpdateName: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired,
+    onSaveAs: PropTypes.func.isRequired,
+    onOpen: PropTypes.func.isRequired,
+    onImport: PropTypes.func.isRequired,
+    onExport: PropTypes.func.isRequired,
+    onInfo: PropTypes.func.isRequired,
     rtl: PropTypes.bool.isRequired,
     width: PropTypes.number
 };
