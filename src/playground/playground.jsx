@@ -38,7 +38,7 @@ class Playground extends React.Component {
         const rtl = match && match[1] == 'rtl';
         this.id = 0;
         this.state = {
-            name: 'Unnamed SVG',
+            name: 'Untitled Document',
             rotationCenterX: 20,
             rotationCenterY: 400,
             imageFormat: 'svg', // 'svg', 'png', or 'jpg'

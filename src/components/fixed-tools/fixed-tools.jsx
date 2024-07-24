@@ -30,6 +30,7 @@ import sendFrontIcon from './icons/send-front.svg';
 import undoIcon from './icons/undo.svg';
 import ungroupIcon from './icons/ungroup.svg';
 
+import documentPropertiesIcon from './icons/document-properties.svg';
 import exportIcon from './icons/export.svg';
 import importIcon from './icons/import.svg';
 import infoIcon from './icons/info.svg';
@@ -89,10 +90,10 @@ const messages = defineMessages({
         description: 'Label for dropdown to access more action buttons',
         id: 'paint.paintEditor.more'
     },
-    docSettings: {
-        defaultMessage: 'Document Settings',
+    documentProperties: {
+        defaultMessage: 'Document Properties',
         description: 'todo write this later',
-        id: 'paint.paintEditor.docSettings'
+        id: 'paint.paintEditor.documentProperties'
     },
     save: {
         defaultMessage: 'Save',
@@ -200,6 +201,19 @@ const FixedToolsComponent = props => {
                     </Button>
                 </ButtonGroup>
             </InputGroup>
+
+            {/* Document Properties */}
+            {isVector(props.format) ?
+                <InputGroup className={styles.modDashedBorder}>
+                    <LabeledIconButton
+                        disabled={false}
+                        hideLabel={false}
+                        imgSrc={documentPropertiesIcon}
+                        title={props.intl.formatMessage(messages.documentProperties)}
+                        onClick={props.onDocumentProperties}
+                    />
+                </InputGroup> : null
+            }
 
             {/* Save/Save As */}
             {isVector(props.format) ?
@@ -418,6 +432,7 @@ FixedToolsComponent.propTypes = {
     onUndo: PropTypes.func.isRequired,
     onUngroup: PropTypes.func.isRequired,
     onUpdateName: PropTypes.func.isRequired,
+    onDocumentProperties: PropTypes.func.isRequired,
     onSave: PropTypes.func.isRequired,
     onSaveAs: PropTypes.func.isRequired,
     onOpen: PropTypes.func.isRequired,
