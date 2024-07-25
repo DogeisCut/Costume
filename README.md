@@ -204,6 +204,12 @@ It’s worth noting that Costume is based on the [PenguinMod](https://github.com
 
   - A tool for quickly locking/unlocking shapes and groups.
 
+  - Button to unlock all.
+
+- ### Hide
+
+  - A tool that can hide shapes and groups, will have a button to unhide all.
+
 - ### Pivot
 
   - This tool allows you to adjust the pivot point for shapes and groups and have it saved that way.
