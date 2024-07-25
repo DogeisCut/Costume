@@ -8,7 +8,7 @@ import InputGroup from './input-group/input-group.jsx';
 import Label from './forms/label.jsx';
 
 import GradientTypes from '../lib/gradient-types';
-import StrokeStylePicker from './stroke-style-picker.jsx';
+import StrokeStylePicker from './stroke-style-picker/stroke-style-picker.jsx';
 
 const StrokeStyleIndicatorComponent = props => (
     <InputGroup
