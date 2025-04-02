@@ -5,7 +5,7 @@ Costume is designed to be a user friendly vector editor, based on that of the Sc
 When ready, I'd like to have this avaliable in the form of a downloadable app (seen in releases), and on pages as a web app!
 
 It’s worth noting that Costume is based on the [PenguinMod](https://github.com/PenguinMod/PenguinMod-Paint) version of the paint editor, so things like skewing and snapping will already be added. Many addons part of Scratch Addons may also become part of the editor.
-
+(I am starting to think that forking PM's editor specifically was a bad choice...)
 
 ## General
 
