@@ -1,4 +1,4 @@
-import paper from '@turbowarp/paper';
+import paper from '@scratch/paper';
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
@@ -46,12 +46,7 @@ class ModeTools extends React.Component {
             'handleMergeShape',
             'handleMaskShape',
             'handleSubtractShape',
-            'handleExcludeShape',
-            'handleRoundEnds',
-            'handleSquareEnds',
-            'handleMiterLineJoin',
-            'handleRoundLineJoin',
-            'handleBevelLineJoin'
+            'handleExcludeShape'
         ]);
     }
     _getSelectedUncurvedPoints () {
@@ -156,132 +151,6 @@ class ModeTools extends React.Component {
             if (!noHandles) {
                 point.handleIn = null;
                 point.handleOut = null;
-                changed = true;
-            }
-        }
-        if (changed) {
-            this.props.setSelectedItems(this.props.format);
-            this.props.onUpdateImage();
-        }
-    }
-    hasSelectedRoundEnds () {
-        const selectedItems = getSelectedLeafItems();
-        for (const item of selectedItems) {
-            const style = item.getStyle().getStrokeCap();
-            if (style === 'round') {
-                return true;
-            }
-        }
-        return false;
-    }
-    hasSelectedSquareEnds () {
-        const selectedItems = getSelectedLeafItems();
-        for (const item of selectedItems) {
-            const style = item.getStyle().getStrokeCap();
-            if (style !== 'round') {
-                return true;
-            }
-        }
-        return false;
-    }
-    handleRoundEnds () {
-        let changed;
-        const selectedItems = getSelectedLeafItems();
-        for (const item of selectedItems) {
-            const styles = item.getStyle();
-            if (styles.getStrokeCap() !== 'round') {
-                styles.setStrokeCap('round');
-                changed = true;
-            }
-        }
-        if (changed) {
-            this.props.setSelectedItems(this.props.format);
-            this.props.onUpdateImage();
-        }
-    }
-    handleSquareEnds () {
-        let changed;
-        const selectedItems = getSelectedLeafItems();
-        for (const item of selectedItems) {
-            const styles = item.getStyle();
-            console.log(styles.getStrokeCap())
-            if (styles.getStrokeCap() === 'round') {
-                styles.setStrokeCap('butt');
-                changed = true;
-            }
-        }
-        if (changed) {
-            this.props.setSelectedItems(this.props.format);
-            this.props.onUpdateImage();
-        }
-    }
-    hasSelectedMiterLineJoins () {
-        const selectedItems = getSelectedLeafItems();
-        for (const item of selectedItems) {
-            const style = item.getStyle().getStrokeJoin();
-            if (style === 'miter') {
-                return true;
-            }
-        }
-        return false;
-    }
-    hasSelectedRoundLineJoins () {
-        const selectedItems = getSelectedLeafItems();
-        for (const item of selectedItems) {
-            const style = item.getStyle().getStrokeJoin();
-            if (style === 'round') {
-                return true;
-            }
-        }
-        return false;
-    }
-    hasSelectedBevelLineJoins () {
-        const selectedItems = getSelectedLeafItems();
-        for (const item of selectedItems) {
-            const style = item.getStyle().getStrokeJoin();
-            if (style === 'bevel') {
-                return true;
-            }
-        }
-        return false;
-    }
-    handleMiterLineJoin () {
-        let changed;
-        const selectedItems = getSelectedLeafItems();
-        for (const item of selectedItems) {
-            const styles = item.getStyle();
-            if (styles.getStrokeJoin() !== 'miter') {
-                styles.setStrokeJoin('miter');
-                changed = true;
-            }
-        }
-        if (changed) {
-            this.props.setSelectedItems(this.props.format);
-            this.props.onUpdateImage();
-        }
-    }
-    handleRoundLineJoin () {
-        let changed;
-        const selectedItems = getSelectedLeafItems();
-        for (const item of selectedItems) {
-            const styles = item.getStyle();
-            if (styles.getStrokeJoin() !== 'round') {
-                styles.setStrokeJoin('round');
-                changed = true;
-            }
-        }
-        if (changed) {
-            this.props.setSelectedItems(this.props.format);
-            this.props.onUpdateImage();
-        }
-    }
-    handleBevelLineJoin () {
-        let changed;
-        const selectedItems = getSelectedLeafItems();
-        for (const item of selectedItems) {
-            const styles = item.getStyle();
-            if (styles.getStrokeJoin() !== 'bevel') {
-                styles.setStrokeJoin('bevel');
                 changed = true;
             }
         }
@@ -453,17 +322,6 @@ class ModeTools extends React.Component {
                 onPasteFromClipboard={this.handlePasteFromClipboard}
                 onPointPoints={this.handlePointPoints}
                 onUpdateImage={this.props.onUpdateImage}
-
-                hasSelectedRoundEnds={this.hasSelectedRoundEnds()}
-                hasSelectedSquareEnds={this.hasSelectedSquareEnds()}
-                onRoundEnds={this.handleRoundEnds}
-                onSquareEnds={this.handleSquareEnds}
-                hasSelectedMiterLineJoin={this.hasSelectedMiterLineJoins()}
-                hasSelectedRoundLineJoin={this.hasSelectedRoundLineJoins()}
-                hasSelectedBevelLineJoin={this.hasSelectedBevelLineJoins()}
-                onMiterLineJoin={this.handleMiterLineJoin}
-                onRoundLineJoin={this.handleRoundLineJoin}
-                onBevelLineJoin={this.handleBevelLineJoin}
 
                 onTextAlignLeft={this.handleTextAlignLeft}
                 onTextAlignRight={this.handleTextAlignRight}

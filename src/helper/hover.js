@@ -1,4 +1,4 @@
-import paper from '@turbowarp/paper';
+import paper from '@scratch/paper';
 import {isBoundsItem, getRootItem} from './item';
 import {hoverBounds, hoverItem} from './guides';
 import {isGroupChild} from './group';

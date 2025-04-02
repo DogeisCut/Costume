@@ -1,4 +1,4 @@
-import paper from '@turbowarp/paper';
+import paper from '@scratch/paper';
 import {getItems} from './selection';
 
 /**

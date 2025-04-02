@@ -82,7 +82,7 @@ class PenMode extends React.Component {
 PenMode.propTypes = {
     clearSelectedItems: PropTypes.func.isRequired,
     colorState: PropTypes.shape({
-        fillStyle: PropTypes.string,
+        fillColor: PropTypes.string,
         strokeColor: PropTypes.string,
         strokeWidth: PropTypes.number
     }).isRequired,
@@ -96,6 +96,7 @@ PenMode.propTypes = {
 const mapStateToProps = state => ({
     colorState: state.scratchPaint.color,
     isPenModeActive: state.scratchPaint.mode === Modes.PEN
+
 });
 const mapDispatchToProps = dispatch => ({
     clearSelectedItems: () => {
