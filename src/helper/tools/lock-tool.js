@@ -29,7 +29,7 @@ class LockTool extends paper.Tool {
         this.onMouseMove = this.handleMouseMove;
         this.onMouseUp = this.handleMouseUp;
     }
-    getHitOptions (preselectedOnly) {
+    getHitOptions () {
         const hitOptions = {
             segments: true,
             stroke: true,
@@ -37,9 +37,8 @@ class LockTool extends paper.Tool {
             fill: true,
             guide: false,
             tolerance: LockTool.TOLERANCE / paper.view.zoom,
-            match: hitResult => {
-                if (!hitResult.item.data || !hitResult.item.data.isHelperItem) return true;
-                return hitResult.item.data.isScaleHandle || hitResult.item.data.isRotHandle;
+            match: function() {
+                return true;
             }
         };
         return hitOptions;

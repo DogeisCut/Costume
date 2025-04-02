@@ -44,11 +44,16 @@ class LockMode extends React.Component {
         );
         this.tool.activate();
 
-        paper.project.activeLayer.children.forEach(child => {
-            if (child.getLocked()) {
-                child.setSelected(true)
+
+        for (const layer of paper.project.layers) {
+            if (layer.data && layer.data['isPaintingLayer']) {
+                layer.children.forEach(child => {
+                    if (child.getLocked()) {
+                        child.setSelected(true)
+                    }
+                })
             }
-        })
+        }
     }
     deactivateTool () {
         clearSelection(this.props.clearSelectedItems);

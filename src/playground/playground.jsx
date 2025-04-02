@@ -172,7 +172,7 @@ class Playground extends React.Component {
                     onUpdateImage={this.handleUpdateImage}
                 />
                 <button className={styles.playgroundButton}  onClick={this.uploadImage}>Upload</button>
-                <input id={styles.fileInput} type="file" name="name" onChange={this.onUploadImage} />
+                <input id={styles.fileInput} type="file" name="name" accept="image/svg+xml" onChange={this.onUploadImage} />
                 <button className={styles.playgroundButton} onClick={this.downloadImage}>Download</button>
             </div>
         );
